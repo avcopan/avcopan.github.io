@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{% for post in site.posts %}
+    <p>
+        <a href="{{ post.url }}">
+            <b>
+                {{ post.title }}
+            </b>
+        </a>
+
+        <br/>
+        {% if post.content contains '<!--more-->' %}
+            {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+            ...
+        {% else %}
+            {{ post.content }}
+        {% endif %}
+        <br/>
+        <div align="right">
+            {{ post.date | date: "%Y/%m/%d  %H:%M" }}
+        </div>
+    </p>
+{% endfor %}
